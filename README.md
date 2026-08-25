@@ -31,13 +31,11 @@ The model learned across 3 epochs:
 Project Structure
 -----------------
 
-sentiment_app.py         - Streamlit web app (main interface)
-app.py                   - FastAPI version (optional backend)
+app.py         - Streamlit web app (main interface)
 requirements.txt         - Python dependencies
 .gitignore              - Git ignore rules
-week1_data_loading.ipynb - Data loading and exploration
-week2_tokenization.ipynb - Tokenization pipeline
-week3_training.ipynb    - Model training
+training.py    - Training of the model (not included in repo)
+model.py       - Main model code
 
 my_trained_bert_sentiment_best/  - Trained model weights
 data/                            - Dataset (not included in repo)
@@ -63,15 +61,6 @@ Try these examples:
 - Positive: "I absolutely love this! It's amazing and incredible!"
 - Negative: "This is terrible and a complete waste of time."
 - Mixed: "It was okay, nothing special but not bad either."
-
-Live Demo
----------
-
-Deploy on Streamlit Cloud for free:
-1. Push code to GitHub
-2. Go to https://share.streamlit.io/
-3. Connect your repo and select sentiment_app.py
-4. Done - app is live in 2-3 minutes
 
 Training Details
 ----------------
@@ -110,8 +99,6 @@ NumPy, Pandas - Data processing
 
 Key Learnings
 -------------
-
-GPU vs CPU: RTX 3050 with proper setup was 3x faster than CPU
 Tokenizer: Always explicitly move model to device before training
 Format Issues: Use set_format('torch') for PyTorch DataLoaders
 Label Names: BERT expects 'labels' not 'label' as column name
@@ -145,32 +132,13 @@ Future Improvements
 -------------------
 
 Possible enhancements:
-- Train on full 3 epochs and test accuracy improvement
-- Deploy on Hugging Face Spaces for faster inference
+- Test accuracy improvement
 - Add batch prediction (upload CSV of tweets)
-- Fine-tune larger BERT model for higher accuracy
 - Add confidence threshold filtering
 - Create REST API with rate limiting
 - Add support for other languages
 - Implement model quantization for faster inference
 
-How to Train Your Own
----------------------
-
-If you want to retrain:
-
-1. Make sure you have GPU access (Colab or local NVIDIA GPU)
-
-2. Prepare data:
-   python week1_data_loading.ipynb
-
-3. Tokenize:
-   python week2_tokenization.ipynb
-
-4. Train:
-   python week3_training.ipynb
-
-5. Training takes 11.5 hours on RTX 3050, 5-7 hours on Colab T4
 
 Dependencies
 ------------
